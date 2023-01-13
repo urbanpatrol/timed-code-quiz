@@ -6,5 +6,5 @@ var startButton = document.getElementById("start-btn");
 
 // Start button triggers the first question and then displays the 'next' button
 
-
+startButton.addEventListener
 
