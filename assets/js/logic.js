@@ -77,7 +77,6 @@ function showQuestion(question) {
 
 // Reset state function
 function resetState() {
-    //clearStatusClass(document.body)
     nextButton.classList.add("hide")
     checkAnswerEl.classList.add("hide")
     while (answerButtonsEl.firstChild) {
@@ -90,7 +89,6 @@ function resetState() {
 // Select answer function
 function selectAnswer(e) {
     var selectedButton = e.target;
-    //console.dir(selectedButton);
     var correct = selectedButton.dataset.correct;
     checkAnswerEl.classList.remove("hide")
     // Check if the answer correct or wrong then show text
@@ -101,7 +99,7 @@ function selectAnswer(e) {
         if (timeLeft <= 10) {
             timeLeft = 0;
         } else {
-            // If the aswer is wrong, deduct time by 10
+            // If the answer is wrong, deduct timer by 10
             timeLeft -= 10;
         }
     }
@@ -143,7 +141,6 @@ function saveScore() {
     clearInterval(timerID);
     timerEl.textContent = "Time: " + timeLeft;
     setTimeout(function () {
-        //localStorage.setItem("scores", JSON.stringify(scores));
         questionContainerEl.classList.add("hide");
         document.getElementById("score-container").classList.remove("hide");
         document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
@@ -159,7 +156,7 @@ var loadScores = function () {
         return false;
     }
 
-    // Convert scores from stringfield format into array
+    // Convert scores from a string into an array
     savedScores = JSON.parse(savedScores);
     var initials = document.querySelector("#initials-field").value;
     var newScore = {
@@ -191,7 +188,6 @@ function showHighScores(initials) {
 
     var highScoreEl = document.getElementById("highscore");
     highScoreEl.innerHTML = "";
-    //console.log(scores)
     for (i = 0; i < scores.length; i++) {
         var div1 = document.createElement("div");
         div1.setAttribute("class", "name-div");
