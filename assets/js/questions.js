@@ -1,6 +1,6 @@
 // Question variable containing questions and answers in a nested array.
 
-const questions = [
+let questions = [
     { 
         question: "How do you write 'Hello World' in an alert box?", 
         answers: [
