@@ -1,23 +1,23 @@
 // Start the quiz with a timer set to 75. Timer left also will be the final score.
-let timeLeft = 75;
-let timerID;
-let timerEl = document.getElementById("timer");
-let startButton = document.getElementById("start-btn");
-let nextButton = document.getElementById("next-btn");
-let questionContainerEl = document.getElementById("question-container");
-let startContainerEl = document.getElementById("start-container");
-let questionEl = document.getElementById("question");
-let answerButtonsEl = document.getElementById("answer-buttons");
-let checkAnswerEl = document.getElementById("check-answer");
-let viewHighScores = document.getElementById("highscores-link");
-let submitButton = document.getElementById("submit-btn");
-let clearScoreButton = document.getElementById("clear-btn");
-let initialsField = document.getElementById("player-name");
-let restartButton = document.getElementById("restart-btn");
-let scoreField = document.getElementById("player-score");
-let scores = JSON.parse(localStorage.getItem("scores")) || [];
+var timeLeft = 75;
+var timerID;
+var timerEl = document.getElementById("timer");
+var startButton = document.getElementById("start-btn");
+var nextButton = document.getElementById("next-btn");
+var questionContainerEl = document.getElementById("question-container");
+var startContainerEl = document.getElementById("start-container");
+var questionEl = document.getElementById("question");
+var answerButtonsEl = document.getElementById("answer-buttons");
+var checkAnswerEl = document.getElementById("check-answer");
+var viewHighScores = document.getElementById("highscores-link");
+var submitButton = document.getElementById("submit-btn");
+var clearScoreButton = document.getElementById("clear-btn");
+var initialsField = document.getElementById("player-name");
+var restartButton = document.getElementById("restart-btn");
+var scoreField = document.getElementById("player-score");
+var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-let shuffledQuestions, currentQuestionIndex;
+var shuffledQuestions, currentQuestionIndex;
 
 // Start button trigger the first question and next button to display
 startButton.addEventListener("click", startGame);

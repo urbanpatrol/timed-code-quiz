@@ -1,6 +1,6 @@
 // Question variable containing questions and answers in a nested array.
 
-let questions = [
+const questions = [
     { 
         question: "How do you write 'Hello World' in an alert box?", 
         answers: [
@@ -31,19 +31,19 @@ let questions = [
     { 
         question: "What is the correct way to write a JavaScript array?", 
         answers: [
-            { text: "var vegetable = (0:'kale', 1:'lettuce', 2:'spinach')", correct: false },
-            { text: "var vegetable = ['kale', 'lettuce', 'spinach']", correct: true },
-            { text: "var vegetable = (kale, lettuce, spinach)", correct: false },
+            { text: "var takeaway = (0:'sushi', 1:'pizza', 2:'burger')", correct: false },
+            { text: "var takeaway = ['sushi', 'pizza', 'burger']", correct: true },
+            { text: "var takeaway = (sushi, pizza, burger)", correct: false },
             { text: "None of the above", correct: false }
         ]
     },
     { 
-        question: "How do you round the number 102.456, to the nearest integer?",
+        question: "Who invented JavaScript?",
         answers: [
-            { text: "Math.random(102.456)", correct: false },
-            { text: "Math.rnd(102.456)", correct: false },
-            { text: "round(102.456)", correct: false },
-            { text: "None of the above", correct: true }
+            { text: "Douglas Crockford", correct: false },
+            { text: "Sheryl Sandberg", correct: false },
+            { text: "Brendan Eich", correct: true },
+            { text: "None of the above", correct: false }
         ]
     },
 ];
