@@ -16,6 +16,22 @@ The project is to build a timed coding quiz with multiple-choice questions. The 
 ## Links
 You can find the application for reference here [Timed Code Quiz](https://urbanpatrol.github.io/timed-code-quiz/index.html)
 
+## User Story
+* AS a coding bootcamp student
+* I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+* SO THAT I can gauge my progress compared to my peers
+
+## Acceptance Criteria
+* GIVEN I am taking a code quiz
+* WHEN I click the start button
+* THEN a timer starts and I am presented with a question
+* WHEN I answer a question incorrectly
+* THEN time is subtracted from the clock
+* WHEN all questions are answered or the timer reached 0
+* THEN the game is over
+* WHEN the game is over
+* THEN I can save my initials and score
+
 ## Approach
 Some leeway has been allowed in terms of design but shoudl emulate my existing portfolio site in terms of functioin and somewhat with regard to components used.
 
