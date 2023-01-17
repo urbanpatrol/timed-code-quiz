@@ -1,4 +1,5 @@
-// Start the quiz with a timer set to 75. Timer left also will be the final score.
+// Start the quiz with a timer set to 75. 
+// Timer left also will be the final score.
 var timeLeft = 75;
 var timerID;
 var timerEl = document.getElementById("timer");
@@ -19,17 +20,24 @@ var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 var shuffledQuestions, currentQuestionIndex;
 
-// Start button trigger the first question and next button to display
+// Adds an event listener to the "startButton" element which listens for a "click" event
+// Triggers the "startGame" function when teh button is clicked
 startButton.addEventListener("click", startGame);
+// Adds an event listener to the "nextButton" element which listens for a "click" event
+// Triggers an anonymous function when button is clicked
+// The function increases the value of the "currentQuestionIndex" variable by 1, and then calls teh "setNextQuestion" function
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++
     setNextQuestion()
 });
 
 // Countdown timer
+// The 'timeTick' function reduces the value of the "timeLeft" variable by 1 in each call
+// Update the value of the id "timerEl" with the string "Time" followed by the current value of "timeLeft"
 function timeTick() {
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft;
+    // if the value of the "timeLeft" variable is less than or equal to 0, then the function 'saveScore()' is called
     if (timeLeft <= 0) {
         saveScore();
     }
