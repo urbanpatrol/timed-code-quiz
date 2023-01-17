@@ -32,42 +32,40 @@ You can find the application for reference here [Timed Code Quiz](https://urbanp
 * WHEN the game is over
 * THEN I can save my initials and score
 
+## Mockup
+![](/assets/images/04-web-apis-homework-demo.gif)
+
 ## Approach
-Some leeway has been allowed in terms of design but shoudl emulate my existing portfolio site in terms of functioin and somewhat with regard to components used.
+This project was certainly the largest leap experienced from class to activity.
 
-It would have been normal practice to add a navigational menu at the very top hwoever, I decided to add it below the hero. The hero will ultimaley be a personal image to add more value to the homepage.
+A breakdown of requirements into pseudo code was my first approach and slowly worked through the individual code sets piecing each together piece-by-piece.
 
-I liked the idea of using a parallax in the background for a hero and did not think this too much a departure from the original design. This was easy to impelement using a copy of W3Schools parallax.
+The questions were the easy part. Deciding what var to use as I progressed was where certain resources came in handy in trying to make it make sense.
 
 ## Challenges
-#### *Navigation*
- I struggled way longer than I should have with the navigation and this appears to be a note of contention with me. For some reason I cannot get navigation to do what I want and so will request additional support.
-
-## Frame of Reference
-I wish to build out my site to look like this one https://bootstrapmade.com/demo/Lonely/ and ultimatley heading in that direction. TO NOTE: I have used some elements as a frame of reference but have only used Bootstrap, W3Schools, StackOverflow and Google search as code sources. 
+I struggled. It was suggested to take advantage of ChatGPT for code corrections or filler however, this was not possible due to overload on the system and could not gain access. However, I did find a number of resources on Github that helped tremendously in understanding coding elements particularly around scoring.
 
 ## Credits
-
-* Many thanks to Dan and the TA's for their undivided attention.
-* StackOverflow is an invaluable resource.
-* W3Schools and all those people who have traversed this path and share their expereince on the internet.
+* Github: Sylvia Prabudy
+* StackOverflow
+* GeekforGeeks
 
 ## License
-
-MIT
+n/a
 
 ## Features
+* An application that is timed to 75s with a round of 5 questions each with 4 answers. Some are true, some are false.
+* Score true and time stays the same.
+* Score flase and time is subtracted by 10s.
+* Answer all questions and your time is the top score.
+* Upon scoring, enter your initials to rank.
+* Score rankings are saved locally.
+* Option to clear scores on final screen.
 
-* Parallax hero
-* Navigationial links to areas of content
-* Skills section featuring skill levels for various packages
-* Work portfolio section featuring latest projects
-* Contact section
+![](/assets/images/score-leaderboard.png)
 
 ## Tests
-
-* I discovered a shortcut on how to format code in VS - it's the small things :)
-* UAT by self.
+UAT Self-test
 
 ---
 
