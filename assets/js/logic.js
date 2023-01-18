@@ -131,7 +131,7 @@ function selectAnswer(e) {
     Array.from(answerButtonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-// Checks if there are more questions left by comparing the length of the "shufffledQuestions" array and teh "currentQuestionIndex" variable
+    // Checks if there are more questions left by comparing the length of the "shufffledQuestions" array and teh "currentQuestionIndex" variable
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         // If there are no more questions, it removes the "hide" class from the "nextButton" displaying the next button
         nextButton.classList.remove("hide")
@@ -185,7 +185,7 @@ function saveScore() {
 
 // Load scores function to load scores from local storage
 let loadScores = function () {
-// If 'savedScores' is false, there are no scores in local storage and function stops
+    // If 'savedScores' is false, there are no scores in local storage and function stops
     if (!savedScores) {
         return false;
     }
@@ -204,7 +204,7 @@ let loadScores = function () {
     // pushes the new score to the 'savedScores' array
     savedScores.push(newScore);
     console.log(savedScores)
-// uses a forEach method to loop through teh 'savedScores' array for each scoe it assigns the initials to the 'initialsField' element and the score to the 'scoreField' element
+    // uses a forEach method to loop through teh 'savedScores' array for each scoe it assigns the initials to the 'initialsField' element and the score to the 'scoreField' element
     savedScores.forEach(score => {
         initialsField.innerText = score.initials
         scoreField.innerText = score.score
@@ -243,11 +243,11 @@ function showHighScores(initials) {
         let div2 = document.createElement("div");
         div2.setAttribute("class", "score-div");
         div2.innerText = scores[i].timeLeft;
-// appends the div element to the highScoreEl element using appendChild() method
+        // appends the div element to the highScoreEl element using appendChild() method
         highScoreEl.appendChild(div1);
         highScoreEl.appendChild(div2);
     }
-// stores the scores array in local storage using localStorage.setItem() method, by converting the array to a string using JSON.stringify() method
+    // stores the scores array in local storage using localStorage.setItem() method, by converting the array to a string using JSON.stringify() method
     localStorage.setItem("scores", JSON.stringify(scores));
 
 };
