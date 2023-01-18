@@ -5,27 +5,28 @@ const questions = [
         question: "How do you write 'Hello World' in an alert box?", 
         answers: [
             { text: "msg('Hello World')", correct: false },
-            { text: "alert('Hello World')" , correct: true },
             { text: "prompt('Hello World')", correct: false },
+            { text: "alert('Hello World')" , correct: true },
             { text: "alertBox('Hello World')", correct: false }
         ]
     },
     { 
-        question: "How to write an IF statement for executing some code if 'i' is NOT equal to 3?", 
+        question: "Which of the following variables takes precedence over the others if the names are the same?", 
         answers: [
-            { text: "if (i != 3)", correct: true },
-            { text: "if i =! 3", correct: false },
-            { text: "if (i <> 3)", correct: false },
-            { text: "if (i !=== 3)", correct: false }
+            { text: "the local element", correct: true },
+            { text: "global variable", correct: false },
+            { text: "the two above statements", correct: false },
+            { text: "none of the above", correct: false },
+            
         ]
     },
     { 
-        question: "Which of the following function of Array object calls a function for each element in the array?", 
+        question: "The 'function' and 'var' are known as?", 
         answers: [
-            { text: "concat()", correct: false },
-            { text: "filter()", correct: false },
-            { text: "forEach()", correct: true },
-            { text: "split()", correct: false }
+            { text: "keywords", correct: false },
+            { text: "data types", correct: false },
+            { text: "declaration statments", correct: true },
+            { text: "prototypes", correct: false }
         ]
     },
     { 
