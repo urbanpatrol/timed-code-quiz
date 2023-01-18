@@ -1,6 +1,5 @@
-// Start the quiz with a timer set to 75. 
-// Timer left also will be the final score.
-var timeLeft = 75;
+// Global variables as referenced in the HTML by ID
+var timeLeft = 75; // Timer is set to 75 secs
 var timerID;
 var timerEl = document.getElementById("timer");
 var startButton = document.getElementById("start-btn");
@@ -16,9 +15,10 @@ var clearScoreButton = document.getElementById("clear-btn");
 var initialsField = document.getElementById("player-name");
 var restartButton = document.getElementById("restart-btn");
 var scoreField = document.getElementById("player-score");
-var scores = JSON.parse(localStorage.getItem("scores")) || [];
+// Retrieves the value of the "scores" key from local storage, parse it as a JSON object and assigns it to the scores variable. If the key is not found or the value is not a valid JSON, it assigns an empty array to the scores variable.
+let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-var shuffledQuestions, currentQuestionIndex;
+let shuffledQuestions, currentQuestionIndex;
 
 // Adds an event listener to the "startButton" element which listens for a "click" event
 // Triggers the "startGame" function when teh button is clicked
@@ -32,9 +32,9 @@ nextButton.addEventListener("click", () => {
 });
 
 // Countdown timer
-// The 'timeTick' function reduces the value of the "timeLeft" variable by 1 in each call
+// The 'timeCount' function reduces the value of the "timeLeft" variable by 1 in each call
 // Update the value of the id "timerEl" with the string "Time" followed by the current value of "timeLeft"
-function timeTick() {
+function timeCount() {
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft;
     // if the value of the "timeLeft" variable is less than or equal to 0, then the function 'saveScore()' is called
@@ -44,9 +44,9 @@ function timeTick() {
 }
 
 // Start Quiz
-// Assigns the return value of 'setInterval(timeTick, 1000)' to the variable 'timerID' causing the 'timeTick' function to be called every second
+// Assigns the return value of 'setInterval(timeCount, 1000)' to the variable 'timerID' causing the 'timeCount' function to be called every second
 function startGame() {
-    timerID = setInterval(timeTick, 1000);
+    timerID = setInterval(timeCount, 1000);
     // Hide the start screen of the game
     startContainerEl.classList.add("hide");
     // Shuffle the questions array and assigns it to the variable "shuffledQuestions" by using the 'sort' method with a callback function that returns a random number between 0 and 1
@@ -56,8 +56,8 @@ function startGame() {
     // Removes the "hide" from the "questionContainerEl" element allowing the question screen of the game
     questionContainerEl.classList.remove("hide");
 
-    // Calls the 'timeTick' function to start the time
-    timeTick();
+    // Calls the 'timeCount' function to start the time
+    timeCount();
     // Calls the 'setNextQuestion' function to set the next question
     setNextQuestion();
 };
@@ -107,6 +107,7 @@ function resetState() {
 };
 
 // Select answer function that allows the user to select an answer, check if the answer is correct and show the next question if any.
+// (e) is a parameter of the anonymous function that is passed to the event listener's callback function. The 'e' variable is a common convention for an event object, which is an object that contains information about the event that occurred, such as the type of event, the target element that triggered the event, and any additional data that may be associated with the event.
 function selectAnswer(e) {
     // assigns event target to the variable "selectedButton"
     let selectedButton = e.target;
@@ -170,7 +171,7 @@ function saveScore() {
     clearInterval(timerID);
     // updates the text content of the "timerEl" element with the final time left using "timeLeft" variable
     timerEl.textContent = "Time: " + timeLeft;
-    // uses 'setTimeout' function to delay the execution of the follwing code by 2 secs
+    // uses 'setTimeout' function to delay the execution of the follwing code by 1.5 secs
     setTimeout(function () {
         // adds the class "hide" to the "questionContainerEl" element, which will hide the question screen
         questionContainerEl.classList.add("hide");
@@ -179,7 +180,7 @@ function saveScore() {
         // updates the text content of the "your-score" element with the string "Your final score is " followed by the final time left using the "timeLeft" variable
         document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
 
-    }, 2000)
+    }, 1500)
 };
 
 // Load scores function to load scores from local storage
@@ -210,54 +211,71 @@ let loadScores = function () {
     })
 };
 
-// Show high scores
+// Function displays high scores in the games, laoding them from local storage
+// Adds new scores to the list and displays them in the HTML
 function showHighScores(initials) {
+    // Removes the class "hide" from the elemnt with ID "highscores" using 'classList.remove()' method
     document.getElementById("highscores").classList.remove("hide")
+    // adds the class "hide" to the element with the ID "score-container", "startContainerEl" and "questionContainerEl" using 'classList.add()' method 
     document.getElementById("score-container").classList.add("hide");
     startContainerEl.classList.add("hide");
     questionContainerEl.classList.add("hide");
+    // checks if the type of 'initials' is "string" using 'typeof' operator. If it is a string, it creates and object called 'score' which has properties 'initials' and 'timeLeft' 
     if (typeof initials == "string") {
         let score = {
             initials, timeLeft
         }
+        // pushes object to the array
         scores.push(score)
     }
 
-    var highScoreEl = document.getElementById("highscore");
+    // declares a variable 'highScoreEl' and assigns ot the element with the ID "highscore" using 'getElementById' method
+    let highScoreEl = document.getElementById("highscore");
+    // sets the iinerHTML of 'highScoreEl' to an empty string
     highScoreEl.innerHTML = "";
+    // uses a for loop to iterate through the scores array
+    // For each score, it creates a div element, set its class attribute to "name-div" and set its inner text to the initials property of the score using innerText property
     for (i = 0; i < scores.length; i++) {
         let div1 = document.createElement("div");
         div1.setAttribute("class", "name-div");
         div1.innerText = scores[i].initials;
+        // creates another div element, set its class attribute to "score-div" and set its inner text to the timeLeft property of the score using innerText property
         let div2 = document.createElement("div");
         div2.setAttribute("class", "score-div");
         div2.innerText = scores[i].timeLeft;
-
+// appends the div element to the highScoreEl element using appendChild() method
         highScoreEl.appendChild(div1);
         highScoreEl.appendChild(div2);
     }
-
+// stores the scores array in local storage using localStorage.setItem() method, by converting the array to a string using JSON.stringify() method
     localStorage.setItem("scores", JSON.stringify(scores));
 
 };
 
 // View high scores link
+// adds a click event listener to ethe 'viewHighScores' button, calling the 'showHighScores' function
 viewHighScores.addEventListener("click", showHighScores);
 
-
+// adds a click event listener to the 'submitButton' button calling an anonymous function which will prevent the default behaviour of the event using the 'event.preventDefault()' method
 submitButton.addEventListener("click", function (event) {
     event.preventDefault()
+    // assigns the value entered in the "#initials-field" element to the 'initials' variable by using 'querySelector()' method  
     let initials = document.querySelector("#initials-field").value;
+    // calls the 'showHighScores' function and passes the 'initials' variable as an argument
     showHighScores(initials);
 });
 
 // Restart or reload the page
+// Adds a click event listener to the restartButton button, which when clicked, will call an anonymous function. This anonymous function will reload the current page using the location.reload() method.
 restartButton.addEventListener("click", function () {
     window.location.reload();
 });
 
-// Clear localStorage items 
+// Clear localStorage items
+// Adds a click event listener to the clearScoreButton button, which when clicked, will call an anonymous function 
 clearScoreButton.addEventListener("click", function () {
+    // Clear the local storage using the localStorage.clear() method
     localStorage.clear();
+    // Sets the innerHTML of the element with the ID "highscore" to an empty string
     document.getElementById("highscore").innerHTML = "";
 });
